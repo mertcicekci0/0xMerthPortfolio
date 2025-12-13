@@ -24,7 +24,7 @@ export default function Hero() {
                     >
                         Building the <br />
                         <span className="italic relative pr-4">
-                            Decentralized
+                            De<span className="strike-red">centralized</span>
                         </span> <br />
                         Future.
                     </motion.h1>

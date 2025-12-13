@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useInView, useMotionValue, useSpring } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
 
 const stats = [
     { value: "+3", label: "Years Experience" },
@@ -18,24 +18,42 @@ export default function Stats() {
         <section ref={ref} className="py-20 border-y border-black/5 bg-white">
             <div className="max-w-7xl mx-auto px-6 md:px-12">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center md:text-left">
-                    {stats.map((stat, i) => (
-                        <motion.div
-                            key={stat.label}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.6, delay: i * 0.1 }}
-                            className="group cursor-default"
-                        >
-                            <h3 className="font-serif text-5xl md:text-6xl font-medium tracking-tight group-hover:scale-110 transition-transform duration-300 origin-left">
-                                {stat.value}
-                            </h3>
-                            <p className="font-mono text-xs uppercase tracking-widest text-neutral-500 mt-2 border-t border-black/10 pt-2 inline-block">
-                                {stat.label}
-                            </p>
-                        </motion.div>
+                    {stats.map((stat) => (
+                        <Counter key={stat.label} value={parseInt(stat.value.replace(/\D/g, ""))} label={stat.label} prefix="+" />
                     ))}
                 </div>
             </div>
         </section>
+    );
+}
+
+function Counter({ value, label, prefix = "" }: { value: number; label: string; prefix?: string }) {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, margin: "-100px" });
+    const motionValue = useMotionValue(0);
+    const springValue = useSpring(motionValue, { damping: 30, stiffness: 100 });
+    const [displayValue, setDisplayValue] = useState(0);
+
+    useEffect(() => {
+        if (isInView) {
+            motionValue.set(value);
+        }
+    }, [isInView, value, motionValue]);
+
+    useEffect(() => {
+        springValue.on("change", (latest: number) => {
+            setDisplayValue(Math.round(latest));
+        });
+    }, [springValue]);
+
+    return (
+        <div ref={ref} className="group cursor-default">
+            <h3 className="font-serif text-5xl md:text-6xl font-medium tracking-tight group-hover:scale-110 transition-transform duration-300 origin-left">
+                {prefix}{displayValue}
+            </h3>
+            <p className="font-mono text-xs uppercase tracking-widest text-neutral-500 mt-2 border-t border-black/10 pt-2 inline-block">
+                {label}
+            </p>
+        </div>
     );
 }

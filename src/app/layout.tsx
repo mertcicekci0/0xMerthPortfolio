@@ -35,6 +35,10 @@ export default function RootLayout({
         className={`${playfair.variable} ${spaceMono.variable} antialiased font-mono bg-white text-black selection:bg-black selection:text-white`}
       >
         <CustomCursor />
+        {/* Noise Overlay */}
+        <div className="fixed inset-0 z-50 pointer-events-none opacity-[0.03] mix-blend-overlay">
+          <div className="w-full h-full bg-[url('/noise.svg')] bg-repeat" />
+        </div>
         {children}
       </body>
     </html>

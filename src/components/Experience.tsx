@@ -90,9 +90,9 @@ export default function Experience() {
 function ExperienceNode({ item }: { item: ExperienceItem }) {
     return (
         <motion.div
-            initial={{ opacity: 0.2, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, margin: "-100px" }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5 }}
             className="relative"
         >

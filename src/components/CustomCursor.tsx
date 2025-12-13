@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function CustomCursor() {
     const mouseX = useMotionValue(0);
@@ -11,27 +11,39 @@ export default function CustomCursor() {
     const cursorX = useSpring(mouseX, springConfig);
     const cursorY = useSpring(mouseY, springConfig);
 
+    const [isHovering, setIsHovering] = useState(false);
+
     useEffect(() => {
         const moveCursor = (e: MouseEvent) => {
-            mouseX.set(e.clientX - 16); // Center the 32px cursor
+            mouseX.set(e.clientX - 16);
             mouseY.set(e.clientY - 16);
         };
 
+        const handleMouseOver = (e: MouseEvent) => {
+            const target = e.target as HTMLElement;
+            if (target.tagName === 'A' || target.tagName === 'BUTTON' || target.closest('a') || target.closest('button')) {
+                setIsHovering(true);
+            } else {
+                setIsHovering(false);
+            }
+        };
+
         window.addEventListener("mousemove", moveCursor);
+        window.addEventListener("mouseover", handleMouseOver);
         return () => {
             window.removeEventListener("mousemove", moveCursor);
+            window.removeEventListener("mouseover", handleMouseOver);
         };
     }, [mouseX, mouseY]);
 
     return (
-        <>
-            <motion.div
-                style={{
-                    translateX: cursorX,
-                    translateY: cursorY,
-                }}
-                className="fixed top-0 left-0 w-8 h-8 rounded-full bg-white mix-blend-difference pointer-events-none z-[9999] hidden md:block"
-            />
-        </>
+        <motion.div
+            style={{
+                translateX: cursorX,
+                translateY: cursorY,
+                scale: isHovering ? 1.5 : 1,
+            }}
+            className="fixed top-0 left-0 w-8 h-8 rounded-full bg-white mix-blend-difference pointer-events-none z-[9999] hidden md:block transition-transform duration-200 ease-out"
+        />
     );
 }
