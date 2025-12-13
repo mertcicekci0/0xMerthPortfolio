@@ -11,11 +11,8 @@ const stats = [
 ];
 
 export default function Stats() {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
-
     return (
-        <section ref={ref} className="py-20 border-y border-black/5 bg-white">
+        <section className="py-20 border-y border-black/5 bg-white">
             <div className="max-w-7xl mx-auto px-6 md:px-12">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center md:text-left">
                     {stats.map((stat) => (

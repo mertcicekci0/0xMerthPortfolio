@@ -38,7 +38,7 @@ const experienceData = [
         date: "OCT 2021 - 2024",
         role: "Founder",
         company: "Tears Of Astrea",
-        description: "Launched and managed a gaming community project.",
+        description: "Founded and operated a streetwear brand. Designed collections and managed operations.",
     },
 ];
 
