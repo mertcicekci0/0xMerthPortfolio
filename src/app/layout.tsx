@@ -22,6 +22,8 @@ export const metadata: Metadata = {
   description: "Minimalist High-End Portfolio",
 };
 
+import CustomCursor from "@/components/CustomCursor";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -32,6 +34,7 @@ export default function RootLayout({
       <body
         className={`${playfair.variable} ${spaceMono.variable} antialiased font-mono bg-white text-black selection:bg-black selection:text-white`}
       >
+        <CustomCursor />
         {children}
       </body>
     </html>

@@ -1,6 +1,8 @@
 "use client";
 
+
 import { motion } from "framer-motion";
+import { useState, useEffect, useMemo } from "react";
 
 
 export default function Hero() {
@@ -56,27 +58,88 @@ export default function Hero() {
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8, delay: 0.6 }}
-                        className="bg-neutral-50 border border-black/10 p-6 font-mono text-xs text-neutral-800 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-300"
+                        className="bg-neutral-50 border border-black/10 p-6 font-mono text-xs text-neutral-800 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-300 min-w-[320px]"
                     >
                         <div className="flex gap-2 mb-4 border-b border-black/5 pb-2">
                             <div className="w-3 h-3 rounded-full bg-red-500/20" />
                             <div className="w-3 h-3 rounded-full bg-yellow-500/20" />
                             <div className="w-3 h-3 rounded-full bg-green-500/20" />
                         </div>
-                        <pre className="whitespace-pre-wrap">
-                            <code>
-                                <span className="text-purple-600">const</span> <span className="text-blue-600">profile</span> = {"{"}
-                                {"\n"}  name: <span className="text-green-600">&quot;Mert Cicekci&quot;</span>,
-                                {"\n"}  role: <span className="text-green-600">&quot;Creative Dev&quot;</span>,
-                                {"\n"}  stack: [<span className="text-green-600">&quot;Next.js&quot;</span>, <span className="text-green-600">&quot;Solidity&quot;</span>],
-                                {"\n"}  status: <span className="text-green-600">&quot;Online&quot;</span>
-                                {"\n"}
-                                {"}"};
-                            </code>
-                        </pre>
+                        <TypewriterCode />
                     </motion.div>
                 </div>
             </div>
         </section>
+    );
+}
+
+function TypewriterCode() {
+    const codeLines = useMemo(() => [
+        { text: "const ", color: "text-purple-600" },
+        { text: "profile ", color: "text-blue-600" },
+        { text: "= {\n", color: "text-black" },
+        { text: "  name: ", color: "text-black" },
+        { text: "\"Mert Cicekci\"", color: "text-green-600" },
+        { text: ",\n", color: "text-black" },
+        { text: "  role: ", color: "text-black" },
+        { text: "\"Creative Dev\"", color: "text-green-600" },
+        { text: ",\n", color: "text-black" },
+        { text: "  stack: [", color: "text-black" },
+        { text: "\"Next.js\"", color: "text-green-600" },
+        { text: ", ", color: "text-black" },
+        { text: "\"Solidity\"", color: "text-green-600" },
+        { text: "],\n", color: "text-black" },
+        { text: "  status: ", color: "text-black" },
+        { text: "\"Online\"", color: "text-green-600" },
+        { text: "\n};", color: "text-black" },
+    ], []);
+
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [charIndex, setCharIndex] = useState(0);
+
+    useEffect(() => {
+        if (currentIndex >= codeLines.length) return;
+
+        const currentLine = codeLines[currentIndex];
+
+        let timeout: NodeJS.Timeout;
+
+        if (charIndex < currentLine.text.length) {
+            timeout = setTimeout(() => {
+                setCharIndex(prev => prev + 1);
+            }, 30 + Math.random() * 50);
+        } else {
+            // Use timeout to break synchronous render loop
+            timeout = setTimeout(() => {
+                setCurrentIndex(prev => prev + 1);
+                setCharIndex(0);
+            }, 50);
+        }
+
+        return () => clearTimeout(timeout);
+    }, [currentIndex, charIndex, codeLines]);
+
+    // RENDER STRATEGY:
+    // We compute what to show based on indices.
+
+    return (
+        <pre className="whitespace-pre-wrap font-mono text-xs">
+            <code>
+                {codeLines.map((line: { text: string; color: string }, lineIdx: number) => {
+                    if (lineIdx < currentIndex) {
+                        return <span key={lineIdx} className={line.color}>{line.text}</span>;
+                    }
+                    if (lineIdx === currentIndex) {
+                        return <span key={lineIdx} className={line.color}>{line.text.slice(0, charIndex)}</span>;
+                    }
+                    return null;
+                })}
+                <motion.span
+                    animate={{ opacity: [1, 0] }}
+                    transition={{ repeat: Infinity, duration: 0.8 }}
+                    className="inline-block w-2 h-4 bg-black align-middle ml-1"
+                />
+            </code>
+        </pre>
     );
 }

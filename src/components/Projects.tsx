@@ -46,9 +46,18 @@ export default function Projects() {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: i * 0.1 }}
                         viewport={{ once: true }}
-                        className={`group relative border border-black/10 overflow-hidden bg-white hover:bg-black hover:text-white transition-colors duration-500 ${project.className}`}
+                        whileHover={{
+                            scale: 0.98,
+                            transition: { duration: 0.1 }
+                        }}
+                        className={`group relative border border-black/10 overflow-hidden bg-white hover:bg-black hover:text-white transition-colors duration-200 ${project.className}`}
                     >
                         <div className={`absolute inset-0 z-0 opacity-50 group-hover:opacity-10 transition-opacity duration-500 ${project.image}`} />
+
+                        {/* Noise Overlay */}
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-20 pointer-events-none z-0 mix-blend-overlay">
+                            <div className="w-full h-full bg-[url('/noise.svg')] bg-repeat animate-noise" />
+                        </div>
 
                         <div className="absolute inset-0 z-10 flex flex-col justify-between p-8">
                             <div className="flex justify-between items-start">
@@ -59,7 +68,7 @@ export default function Projects() {
                             </div>
 
                             <div>
-                                <h3 className="font-serif text-3xl md:text-4xl group-hover:translate-x-2 transition-transform duration-300">
+                                <h3 className="font-serif text-3xl md:text-4xl group-hover:animate-glitch">
                                     {project.title}
                                 </h3>
                             </div>
