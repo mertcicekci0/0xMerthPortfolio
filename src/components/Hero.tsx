@@ -52,13 +52,14 @@ export default function Hero() {
                     </motion.p>
                 </div>
 
+
                 {/* Code Block Visual - Desktop Right */}
-                <div className="hidden md:flex flex-col justify-end">
+                <div className="hidden md:flex flex-col justify-center items-center h-full">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8, delay: 0.6 }}
-                        className="bg-neutral-50 border border-black/10 p-6 font-mono text-xs text-neutral-800 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-300 min-w-[320px]"
+                        className="bg-neutral-50 border border-black/10 p-6 font-mono text-xs text-neutral-800 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-300 min-w-[340px] scale-110 origin-center relative -top-12"
                     >
                         <div className="flex gap-2 mb-4 border-b border-black/5 pb-2">
                             <div className="w-3 h-3 rounded-full bg-red-500/20" />
@@ -82,13 +83,11 @@ function TypewriterCode() {
         { text: "\"Mert Cicekci\"", color: "text-green-600" },
         { text: ",\n", color: "text-black" },
         { text: "  role: ", color: "text-black" },
-        { text: "\"Creative Dev\"", color: "text-green-600" },
+        { text: "\"Web3 Growth, DevRel, Creative Dev\"", color: "text-green-600" },
         { text: ",\n", color: "text-black" },
-        { text: "  stack: [", color: "text-black" },
-        { text: "\"Next.js\"", color: "text-green-600" },
-        { text: ", ", color: "text-black" },
-        { text: "\"Solidity\"", color: "text-green-600" },
-        { text: "],\n", color: "text-black" },
+        { text: "  stack: ", color: "text-black" },
+        { text: "\"Limitless (powered by AI)\"", color: "text-green-600" },
+        { text: ",\n", color: "text-black" },
         { text: "  status: ", color: "text-black" },
         { text: "\"Online\"", color: "text-green-600" },
         { text: "\n};", color: "text-black" },
@@ -109,7 +108,6 @@ function TypewriterCode() {
                 setCharIndex(prev => prev + 1);
             }, 30 + Math.random() * 50);
         } else {
-            // Use timeout to break synchronous render loop
             timeout = setTimeout(() => {
                 setCurrentIndex(prev => prev + 1);
                 setCharIndex(0);
@@ -118,9 +116,6 @@ function TypewriterCode() {
 
         return () => clearTimeout(timeout);
     }, [currentIndex, charIndex, codeLines]);
-
-    // RENDER STRATEGY:
-    // We compute what to show based on indices.
 
     return (
         <pre className="whitespace-pre-wrap font-mono text-xs">

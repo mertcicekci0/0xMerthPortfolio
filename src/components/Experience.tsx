@@ -5,28 +5,40 @@ import { useRef } from "react";
 
 const experienceData = [
     {
-        date: "2024 - PRESENT",
-        role: "Senior Creative Developer",
-        company: "Studio 404",
-        description: "Leading the frontend achievements for Web3 protocols. Built high-performance dApps.",
+        date: "AUG 2025 - PRESENT",
+        role: "DevRel Engineer",
+        company: "Rise In",
+        description: "Driving developer adoption and education. Previously Intern (May-Jul 2025).",
     },
     {
-        date: "2022 - 2024",
-        role: "Frontend Engineer",
-        company: "DefiLlama",
-        description: "Contributed to the core analytics dashboard. Optimized rendering for large datasets.",
+        date: "SEP 2025 - PRESENT",
+        role: "Ambassador",
+        company: "Stellar Dev Foundation",
+        description: "Representing the Stellar network and supporting the local ecosystem.",
     },
     {
-        date: "2020 - 2022",
-        role: "UI Engineer",
-        company: "Freelance",
-        description: "Shipped 15+ websites for crypto startups. Specialized in motion design and interaction.",
+        date: "MAY 2025 - PRESENT",
+        role: "Board Member & Dev Lead",
+        company: "ODTÜ Blockchain",
+        description: "Leading technical initiatives. Member since Sep 2024.",
     },
     {
-        date: "2019 - 2020",
-        role: "Junior Dev",
-        company: "Agency X",
-        description: "Full stack development using React and Node.js.",
+        date: "MAY 2025 - JUL 2025",
+        role: "Ops & Analytics Intern",
+        company: "Patika.dev",
+        description: "Optimized operational workflows and data analysis.",
+    },
+    {
+        date: "APR 2025 - JUN 2025",
+        role: "Full Stack Eng",
+        company: "Campus Arc",
+        description: "Smart Contract Intern (Dec 24 - Apr 25). Built scalable dApps.",
+    },
+    {
+        date: "OCT 2021 - 2024",
+        role: "Founder",
+        company: "Tears Of Astrea",
+        description: "Launched and managed a gaming community project.",
     },
 ];
 
@@ -51,10 +63,10 @@ export default function Experience() {
     });
 
     return (
-        <section ref={containerRef} className="py-24 px-6 md:px-12 bg-white relative">
+        <section id="experience" ref={containerRef} className="py-24 px-6 md:px-12 bg-white relative">
             <div className="max-w-4xl mx-auto">
                 <h2 className="font-serif text-5xl md:text-7xl mb-16 text-center md:text-left">
-                    The Ledger
+                    On-Chain History
                 </h2>
 
                 <div className="relative pl-8 md:pl-12 border-l border-black/10">

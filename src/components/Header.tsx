@@ -1,47 +1,63 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Terminal } from "lucide-react";
+import ContactModal from "./ContactModal";
+
+const navItems = [
+    { name: "Projects", path: "#projects" },
+    { name: "Experience", path: "#experience" },
+];
 
 export default function Header() {
-    const links = [
-        { name: "Projects", href: "#projects" },
-        { name: "About", href: "#about" },
-        { name: "Thoughts", href: "#thoughts" },
-    ];
+    const [isScrolled, setIsScrolled] = useState(false);
+    const [isContactOpen, setIsContactOpen] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 50);
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     return (
-        <motion.header
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed top-0 left-0 w-full z-50 px-6 py-6 md:px-12 flex items-center justify-between mix-blend-difference text-white"
-        >
-            <Link href="/" className="font-serif text-2xl font-bold tracking-tighter">
-                0xMerth
-            </Link>
-
-            <nav className="hidden md:flex items-center gap-8">
-                {links.map((link) => (
-                    <Link
-                        key={link.name}
-                        href={link.href}
-                        className="font-mono text-xs uppercase tracking-widest hover:underline decoration-1 underline-offset-4"
-                    >
-                        {link.name}
+        <>
+            <header
+                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "py-4 bg-white/80 backdrop-blur-md border-b border-black/5" : "py-6 bg-transparent"
+                    }`}
+            >
+                <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+                    <Link href="/" className="font-serif text-xl font-bold tracking-tight">
+                        0xMerth
                     </Link>
-                ))}
-            </nav>
 
-            <button className="hidden md:flex items-center gap-2 border border-white/20 px-4 py-2 font-mono text-xs hover:bg-white hover:text-black transition-colors duration-300">
-                <Terminal size={14} />
-                <span>CONTACT_ME_</span>
-                <div className="w-2 h-4 bg-current animate-pulse ml-1" />
-            </button>
+                    <nav className="hidden md:flex items-center gap-8">
+                        {navItems.map((item) => (
+                            <a
+                                key={item.name}
+                                href={item.path}
+                                className="font-mono text-xs uppercase tracking-widest hover:text-neutral-500 transition-colors"
+                            >
+                                {item.name}
+                            </a>
+                        ))}
+                        <button
+                            onClick={() => setIsContactOpen(true)}
+                            className="bg-black text-white px-5 py-2 font-mono text-xs uppercase tracking-wider hover:bg-neutral-800 transition-colors"
+                        >
+                            Contact_Me_
+                        </button>
+                    </nav>
 
-            {/* Mobile Menu Icon Placeholder */}
-            <button className="md:hidden font-mono text-xs">[MENU]</button>
-        </motion.header>
+                    {/* Mobile Menu Button Placeholder */}
+                    <button className="md:hidden font-mono text-xs uppercase" onClick={() => setIsContactOpen(true)}>
+                        Menu
+                    </button>
+                </div>
+            </header>
+
+            <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
+        </>
     );
 }
