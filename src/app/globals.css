@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: var(--font-playfair);
+  --font-mono: var(--font-space-mono);
+
+  --color-background: #ffffff;
+  --color-foreground: #000000;
+}
+
+/* Custom Base Styles */
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    /* Subtle dot pattern */
+    background-image: radial-gradient(#e5e5e5 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+}
+
+/* Utilities for "brutalist" look */
+@layer utilities {
+  .border-thin {
+    border-width: 0.5px;
+  }
+
+  .terminal-cursor::after {
+    content: "▋";
+    animation: blink 1s step-end infinite;
+    @apply ml-1 text-black;
+  }
+
+  @keyframes blink {
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0;
+    }
+  }
+}
