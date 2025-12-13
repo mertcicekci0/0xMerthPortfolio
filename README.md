@@ -1,6 +1,6 @@
-# x402 Portfolio (0xMerth)
+# Portfolio (0xMerth)
 
-High-end, minimalist personal portfolio website inspired by the "x402" design language. Built with Next.js, Tailwind CSS, and Framer Motion.
+High-end, minimalist personal portfolio website inspired by the design language. Built with Next.js, Tailwind CSS, and Framer Motion.
 
 ## Features
 
