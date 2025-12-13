@@ -18,7 +18,7 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "x402 Portfolio",
+  title: "0xMerth Portfolio",
   description: "Minimalist High-End Portfolio",
 };
 

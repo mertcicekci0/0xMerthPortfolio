@@ -15,15 +15,6 @@ export default function Hero() {
 
                 {/* Main Headline Area */}
                 <div className="md:col-span-2 space-y-8">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="flex items-center gap-4 font-mono text-xs text-neutral-500 uppercase tracking-widest"
-                    >
-                        <span className="inline-block w-2 h-2 bg-black rounded-full" />
-                        Available for freelance
-                    </motion.div>
 
                     <motion.h1
                         initial={{ opacity: 0, y: 40 }}

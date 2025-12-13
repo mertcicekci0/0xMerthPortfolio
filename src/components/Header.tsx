@@ -27,12 +27,12 @@ export default function Header() {
                 className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "py-4 bg-white/80 backdrop-blur-md border-b border-black/5" : "py-6 bg-transparent"
                     }`}
             >
-                <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-                    <Link href="/" className="font-serif text-xl font-bold tracking-tight">
+                <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between relative">
+                    <Link href="/" className="font-serif text-xl font-bold tracking-tight z-10">
                         0xMerth
                     </Link>
 
-                    <nav className="hidden md:flex items-center gap-8">
+                    <nav className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
                         {navItems.map((item) => (
                             <a
                                 key={item.name}
@@ -42,13 +42,14 @@ export default function Header() {
                                 {item.name}
                             </a>
                         ))}
-                        <button
-                            onClick={() => setIsContactOpen(true)}
-                            className="bg-black text-white px-5 py-2 font-mono text-xs uppercase tracking-wider hover:bg-neutral-800 transition-colors"
-                        >
-                            Contact_Me_
-                        </button>
                     </nav>
+
+                    <button
+                        onClick={() => setIsContactOpen(true)}
+                        className="bg-black text-white px-5 py-2 font-mono text-xs uppercase tracking-wider hover:bg-neutral-800 transition-colors z-10"
+                    >
+                        Contact_Me_
+                    </button>
 
                     {/* Mobile Menu Button Placeholder */}
                     <button className="md:hidden font-mono text-xs uppercase" onClick={() => setIsContactOpen(true)}>

@@ -15,31 +15,31 @@ type Project = {
 const projects: Project[] = [
     {
         title: "Algorand Documentation",
-        category: "Education",
+        category: "Educational Resource",
         description: "Author of official educational documentation for Algorand builders.",
         link: "https://www.risein.com/courses/build-on-algorand",
         className: "md:col-span-2 md:row-span-2",
     },
     {
-        title: "ODTÜ Solidity",
+        title: "ODTÜ Solidity Bootcamp",
         category: "Bootcamp",
         description: "Instructor for university blockchain bootcamp.",
-        link: "https://www.linkedin.com/in/cicekci-mert/",
-        className: "md:col-span-1 md:row-span-1",
-    },
-    {
-        title: "Stellar Hack Pera",
-        category: "Mentorship",
-        description: "Mentored teams at Turkey's largest hackathon.",
-        link: "https://www.risein.com/blog/stellar-hack-pera",
+        link: "https://www.linkedin.com/feed/update/urn:li:activity:7381291760569753600/",
         className: "md:col-span-1 md:row-span-1",
     },
     {
         title: "Stellar Prep Series",
-        category: "Community",
+        category: "+1450 Builders Registered",
         description: "Registered 1450+ developers for hackathon preparation.",
         link: "https://www.risein.com/bootcamps/stellar-fullstack-bootcamp",
         className: "md:col-span-2 md:row-span-1",
+    },
+    {
+        title: "Stellar Hack Pera Mentorship",
+        category: "Turkey's Largest IRL Web3 Hackathon",
+        description: "Mentored teams at Turkey's largest hackathon.",
+        link: "https://www.risein.com/blog/stellar-hack-pera-turkeys-largest-irl-web3-hackathon-with-200-participants-70-projects",
+        className: "md:col-span-1 md:row-span-1",
     },
 ];
 
@@ -48,7 +48,6 @@ export default function Projects() {
         <section id="projects" className="py-24 px-6 md:px-12 bg-white text-black">
             <div className="max-w-7xl mx-auto mb-16 flex items-end justify-between">
                 <h2 className="font-serif text-5xl md:text-7xl">Selected Works</h2>
-                <span className="font-mono text-xs hidden md:block">[2023 - 2024]</span>
             </div>
 
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[300px]">
