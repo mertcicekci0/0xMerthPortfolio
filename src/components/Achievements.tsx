@@ -32,7 +32,7 @@ const achievementsData: Record<string, Achievement[]> = {
         { title: "Blockdag", desc: "Community Meetup Host", icon: Users, link: "https://luma.com/yo9vafla" },
         { title: "Stellar", desc: "Workshop Instructor", icon: Users, link: "https://luma.com/event/manage/evt-Kp2EYrVZ26tFApn" },
         { title: "Sui 101", desc: "Blockchain 101 Educator", icon: Users, link: "https://luma.com/user/Merth" },
-        { title: "Blockchain Days", desc: "Co-Organizer & Support", icon: Users, link: "https://www.bdays.org/" },
+        { title: "Blockchain Days", desc: "Community Board Member", icon: Users, link: "https://www.bdays.org/" },
     ],
     Contributions: [
         { title: "Algorand", desc: "Author: Educational Docs", icon: BookOpen, link: "https://www.risein.com/courses/build-on-algorand/what-is-algorand" },
