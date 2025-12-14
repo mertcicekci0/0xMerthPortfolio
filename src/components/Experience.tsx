@@ -32,7 +32,7 @@ const experienceData = [
         date: "APR 2025 - JUN 2025",
         role: "Full Stack Eng",
         company: "Campus Arc",
-        description: "Smart Contract Intern (Dec 24 - Apr 25). Built scalable dApps.",
+        description: "Smart Contract Intern (Dec 24 - Apr 25).",
     },
     {
         date: "OCT 2021 - 2024",

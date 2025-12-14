@@ -29,7 +29,6 @@ const achievementsData: Record<string, Achievement[]> = {
     ],
     Organizing: [
         { title: "Base Ankara", desc: "Builder Program Developer Lead", icon: Users, link: "https://x.com/0xMerth/status/1998862485705863535" },
-        { title: "Blockdag", desc: "Community Meetup Host", icon: Users, link: "https://luma.com/yo9vafla" },
         { title: "Stellar", desc: "Workshop Instructor", icon: Users, link: "https://luma.com/event/manage/evt-Kp2EYrVZ26tFApn" },
         { title: "Sui 101", desc: "Blockchain 101 Educator", icon: Users, link: "https://luma.com/user/Merth" },
         { title: "Blockchain Days", desc: "Community Board Member", icon: Users, link: "https://www.bdays.org/" },
