@@ -5,6 +5,7 @@ import Link from "next/link";
 import ContactModal from "./ContactModal";
 
 const navItems = [
+    { name: "What I Did", path: "#whatidid" },
     { name: "Projects", path: "#projects" },
     { name: "Experience", path: "#experience" },
 ];

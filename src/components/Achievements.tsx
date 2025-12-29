@@ -50,7 +50,7 @@ export default function Achievements() {
     const [activeTab, setActiveTab] = useState("Projects");
 
     return (
-        <section className="py-24 px-6 md:px-12 bg-white flex justify-center">
+        <section id="whatidid" className="py-24 px-6 md:px-12 bg-white flex justify-center">
             <div className="w-full max-w-4xl">
                 {/* OS Window Container */}
                 <motion.div

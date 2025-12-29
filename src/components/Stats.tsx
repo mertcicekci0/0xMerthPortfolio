@@ -14,7 +14,7 @@ export default function Stats() {
     return (
         <section className="py-20 border-y border-black/5 bg-white">
             <div className="max-w-7xl mx-auto px-6 md:px-12">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center md:text-left">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
                     {stats.map((stat) => (
                         <Counter key={stat.label} value={parseInt(stat.value.replace(/\D/g, ""))} label={stat.label} prefix="+" />
                     ))}
@@ -45,7 +45,7 @@ function Counter({ value, label, prefix = "" }: { value: number; label: string; 
 
     return (
         <div ref={ref} className="group cursor-default">
-            <h3 className="font-serif text-5xl md:text-6xl font-medium tracking-tight group-hover:scale-110 transition-transform duration-300 origin-left">
+            <h3 className="font-serif text-5xl md:text-6xl font-medium tracking-tight group-hover:scale-110 transition-transform duration-300 origin-center">
                 {prefix}{displayValue}
             </h3>
             <p className="font-mono text-xs uppercase tracking-widest text-neutral-500 mt-2 border-t border-black/10 pt-2 inline-block">
