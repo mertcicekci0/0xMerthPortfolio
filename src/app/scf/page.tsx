@@ -208,33 +208,18 @@ export default function SCFPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="border border-black/10 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] bg-white shrink-0"
+            className="shrink-0"
           >
-            <div className="px-4 py-2.5 flex items-center gap-2 border-b border-black/10">
-              <div className="flex items-center gap-[7px]">
-                <div className="w-2.5 h-2.5 rounded-full bg-red-500/20" />
-                <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/20" />
-                <div className="w-2.5 h-2.5 rounded-full bg-green-500/20" />
-              </div>
-              <div className="flex-1 text-center">
-                <span className="font-mono text-[10px] text-neutral-400 uppercase tracking-widest">
-                  now_playing.sh
-                </span>
-              </div>
-              <div className="w-[44px]" />
-            </div>
-            <div className="p-3">
-              <iframe
-                style={{ borderRadius: "0px" }}
-                src="https://open.spotify.com/embed/playlist/0Bkc5tE49gOjMrFavC1sN4?utm_source=generator&theme=0"
-                width="100%"
-                height="152"
-                frameBorder="0"
-                allowFullScreen
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                loading="lazy"
-              />
-            </div>
+            <iframe
+              style={{ borderRadius: "0px" }}
+              src="https://open.spotify.com/embed/playlist/0Bkc5tE49gOjMrFavC1sN4?utm_source=generator&theme=0"
+              width="100%"
+              height="152"
+              frameBorder="0"
+              allowFullScreen
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+            />
           </motion.div>
         </div>
       </div>
