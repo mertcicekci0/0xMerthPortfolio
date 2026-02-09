@@ -30,7 +30,7 @@ export default function Header() {
             >
                 <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between relative">
                     <Link href="/" className="font-serif text-xl font-bold tracking-tight z-10">
-                        0xMerth
+                        Merth
                     </Link>
 
                     <nav className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">

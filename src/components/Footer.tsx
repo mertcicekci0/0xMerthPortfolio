@@ -62,7 +62,7 @@ export default function Footer() {
                             <a href="https://github.com/mertcicekci0" target="_blank" className="hover:text-white transition-colors">GitHub</a>
                         </div>
                         <div className="mt-8 text-neutral-600 text-xs">
-                            © {new Date().getFullYear()} 0xMerth. All rights reserved.
+                            © {new Date().getFullYear()} Merth. All rights reserved.
                         </div>
                     </div>
                 </div>
